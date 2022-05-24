@@ -24,7 +24,10 @@ function Note() {
           </Link>
         </div>
         <h1 class="font-bold text-3xl my-12">{note()?.title}</h1>
-        <div innerHTML={marked(note()?.body || "")} class="prose"></div>
+        <div
+          innerHTML={marked(note()?.body || "")}
+          class="prose w-full max-w-full"
+        ></div>
       </Show>
     </ContentLayout>
   );
