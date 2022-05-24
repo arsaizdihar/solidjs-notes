@@ -9,9 +9,9 @@ import ContentLayout from "./ContentLayout";
 function EditNote({ isAdd = false }: { isAdd?: boolean }) {
   const note = useRouteData<Accessor<INote | undefined>>();
   const [title, setTitle] = createSignal(
-    isAdd ? note()?.title || "Untitled" : "Untitled"
+    !isAdd ? note()?.title || "Untitled" : "Untitled"
   );
-  const [body, setBody] = createSignal(isAdd ? note()?.body || "" : "");
+  const [body, setBody] = createSignal(!isAdd ? note()?.body || "" : "");
   const navigate = useNavigate();
   let ref: HTMLInputElement | undefined = undefined;
 
@@ -44,7 +44,7 @@ function EditNote({ isAdd = false }: { isAdd?: boolean }) {
               class="flex text-white font-bold bg-sky-600 hover:bg-sky-500 px-3 py-1 text-sm rounded-full items-center gap-1 duration-200"
               onClick={() => {
                 const newNote = {
-                  id: isAdd ? note()?.id || "" : cuid(),
+                  id: !isAdd ? note()?.id || "" : cuid(),
                   body: body(),
                   title: title(),
                   lastUpdated: new Date(),

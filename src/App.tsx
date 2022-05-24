@@ -26,7 +26,7 @@ const App: Component = () => {
             </div>
           }
         />
-        <Route path="/add" element={<EditNote />} />
+        <Route path="/add" element={<EditNote isAdd />} />
         <Route path="/:id" element={<Note />} data={NoteData} />
         <Route path="/:id/edit" element={<EditNote />} data={NoteData} />
       </Routes>
